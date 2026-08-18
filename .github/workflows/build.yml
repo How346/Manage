@@ -110,8 +110,7 @@ jobs:
           manifest.write_text(m)
 
       - name: fix error 
-       run: |
-          dart fix --apply
+        run: dart fix --apply
 
       - name: Verify dependencies
         run: |
