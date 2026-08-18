@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 
 class SectionHeader extends StatelessWidget {
-  final String title;
-  final String? subtitle;
-  final Widget? action;
-
   const SectionHeader({
     super.key,
     required this.title,
     this.subtitle,
     this.action,
+    this.onAction,
   });
+
+  final String title;
+  final String? subtitle;
+  final String? action;
+  final VoidCallback? onAction;
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           child: Column(
@@ -22,19 +25,26 @@ class SectionHeader extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge
-                    ?.copyWith(fontWeight: FontWeight.w900),
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.w900,
+                    ),
               ),
               if (subtitle != null) ...[
                 const SizedBox(height: 3),
-                Text(subtitle!, style: Theme.of(context).textTheme.bodySmall),
+                Text(
+                  subtitle!,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
               ],
             ],
           ),
         ),
-        if (action != null) action!,
+
+        // Null-aware collection element.
+        ?TextButton(
+          onPressed: onAction,
+          child: Text(action!),
+        ),
       ],
     );
   }
