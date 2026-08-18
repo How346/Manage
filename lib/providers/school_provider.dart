@@ -45,6 +45,11 @@ class SchoolProvider extends ChangeNotifier {
   String get monthYear => DateFormat('MMMM yyyy').format(DateTime.now());
   String get monthDay => DateFormat('MM-dd').format(DateTime.now());
 
+  void setSchoolName(String value) {
+    schoolName = value.trim().isEmpty ? 'My School' : value.trim();
+    notifyListeners();
+  }
+
   Future<void> initialize() async {
     await refreshAll();
     loading = false;

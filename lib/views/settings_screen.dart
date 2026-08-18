@@ -50,8 +50,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   const SizedBox(height: 10),
                   FilledButton(
                     onPressed: () {
-                      p.schoolName = school.text.trim().isEmpty ? 'My School' : school.text.trim();
-                      p.notifyListeners();
+                      p.setSchoolName(school.text);
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('School name updated.')));
                     },
                     child: const Text('Save school name'),

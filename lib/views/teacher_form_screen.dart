@@ -39,7 +39,7 @@ class _TeacherFormScreenState extends State<TeacherFormScreen> {
 
   @override
   void dispose() {
-    for (final c in [name, role, salary, joining, whatsapp]) c.dispose();
+    for (final c in [name, role, salary, joining, whatsapp]) { c.dispose(); }
     super.dispose();
   }
 

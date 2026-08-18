@@ -16,7 +16,7 @@ class NotificationService {
     const ios = DarwinInitializationSettings();
     const settings = InitializationSettings(android: android, iOS: ios);
 
-    await _plugin.initialize(settings);
+    await _plugin.initialize(settings: settings);
 
     final androidPlugin = _plugin.resolvePlatformSpecificImplementation<
         AndroidFlutterLocalNotificationsPlugin>();
@@ -44,16 +44,16 @@ class NotificationService {
     );
 
     await _plugin.zonedSchedule(
-      id,
-      'Fee reminder',
-      '$studentName has pending fee of ₹${dueAmount.toStringAsFixed(0)}.',
-      scheduled,
-      details,
+      id: id,
+      title: 'Fee reminder',
+      body: '$studentName has pending fee of ₹${dueAmount.toStringAsFixed(0)}.',
+      scheduledDate: scheduled,
+      notificationDetails: details,
       androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
       payload: 'fee:$studentName',
     );
   }
 
-  Future<void> cancel(int id) => _plugin.cancel(id);
+  Future<void> cancel(int id) => _plugin.cancel(id: id);
   Future<void> cancelAll() => _plugin.cancelAll();
 }

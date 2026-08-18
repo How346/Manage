@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../models/teacher.dart';
 import '../providers/school_provider.dart';
 import '../widgets/photo_avatar.dart';
 import 'teacher_form_screen.dart';
