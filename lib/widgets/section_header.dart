@@ -25,26 +25,26 @@ class SectionHeader extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.w900,
-                    ),
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge
+                    ?.copyWith(fontWeight: FontWeight.w900),
               ),
               if (subtitle != null) ...[
                 const SizedBox(height: 3),
                 Text(
                   subtitle!,
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
               ],
             ],
           ),
         ),
-
-        // Null-aware collection element.
-        ?TextButton(
-          onPressed: onAction,
-          child: Text(action!),
-        ),
+        if (action != null)
+          TextButton(
+            onPressed: onAction,
+            child: Text(action!),
+          ),
       ],
     );
   }
